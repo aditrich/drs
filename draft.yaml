@@ -1,0 +1,27 @@
+models:
+  Company:
+    name: string
+    relationships:
+      hasMany: Client
+
+  Parish:
+    name: string
+    timestamps: false
+    relationships:
+      hasMany: Client
+
+  Client:
+    company_id: id
+    assigned_to: id foreign:users.id
+    contact_name: string
+    phone: string:16
+    trn: string:9
+    status: enum:following_up,paid_office,no_answer,promise_to_pay
+    company_acc_nbr: string
+    address_line_1: string
+    address_line_2: string
+    parish_id: id
+
+  Comments:
+    user_id: id
+    body: longtext
